@@ -1,0 +1,16 @@
+.select-staff{
+    margin-bottom: 20px;
+}
+.button-native::after {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    content: "";
+    opacity: 0 !important;
+    background: red;
+    --background:#000 !important;
+    width: 10px;
+    height: 10px;
+}

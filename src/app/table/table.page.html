@@ -1,0 +1,239 @@
+<ion-header>
+  <ion-toolbar class="customize-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="tableSwitch=='1'">
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>CLIENT INFO</h3>
+      </div>
+      <ion-list class="main-list">
+        <ion-item lines="none">
+          <ion-label>
+            <div class="main-detail">
+              <h3><b>Name: </b>{{tableData?.title}}</h3>
+              <h3 id="projects"><b>Client Type: </b>Projects </h3>
+              <div class="main-subdetail">
+                <h2><b>Associated User</b></h2>
+                <p><b>User ID: </b>{{tableData?.userid}}</p>
+                <p><b>Username: </b> btran@fusion-projects.com</p>
+                <p><b>Company Name: </b>{{tableData?.company_name}}</p>
+              </div>
+              <div class="main-subdetail">
+                <h2><b>Contact Details</b></h2>
+                <p><b>Contact Name: </b>{{tableData?.company_contact}}</p>
+                <p><b>Email: </b>{{tableData?.company_email}}</p>
+                <p><b>Telephone: </b>{{tableData?.company_telephone}}</p>
+              </div>
+              <!-- <div class="note-detail py-1">
+              <h2><b>Add Note</b></h2>
+              <ion-textarea class="border border-secondary p-1" placeholder="Enter any notes here...">
+              </ion-textarea>
+              <ion-button expand="fill">Submit</ion-button>
+            </div>
+            <div class="note-detail py-1">
+              <h2><b>Upload Image</b></h2>
+              <ion-button expand="fill" color="success" class="mt-3">Upload Image</ion-button>
+            </div> -->
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+
+<ion-content *ngIf="tableSwitch=='2'">
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>CLOCK IN/OUT</h3>
+      </div>
+      <ion-list class="main-list">
+
+        <ion-item lines="none">
+          <ion-label>
+            <ion-label>
+              <div class="main-detail">
+                <h3><b>Name: </b>Fusion Projects </h3>
+                <h3 id="projects"><b>Type: </b>Projects </h3>
+                <div class="main-subdetail">
+                  <h3><b>In-Time </b> 11:10 AM </h3>
+                  <h3 id="projects"><b>Out-Time </b> 07:00 PM </h3>
+
+                  <!-- <h2><b>In-Time</b></h2>
+                    <p><b>User ID: </b> 106</p>
+                    <p><b>Username: </b> btran@fusion-projects.com</p>
+                    <p><b>Company Name: </b> Fusion projects</p> -->
+                </div>
+              </div>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="tableSwitch=='3'">
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>PROJECT INFO</h3>
+      </div>
+      <ion-list class="main-list">
+        <ion-item lines="none">
+          <div class="main-detail set-p">
+            <h3><b>Name: </b>{{tableData?.title}}</h3>
+            <h3 class="mt-1"><b>Last Modified: </b>{{tableData?.post_modified | date: 'dd/MM/yyyy'}} </h3>
+            <h3 id="projects" class="mt-1"><b>Project Type: </b><span innerHTML="{{tableData?.project_type}}"></span>
+            </h3>
+            <div class="main-subdetail py-1">
+              <h2><b>Client Details</b></h2>
+              <span *ngIf="!tableData?.error">
+                <p><b>Company Name: </b><span innerHTML="{{tableData?.client_company_name}}"></span></p>
+                <p><b>Contact Name: </b> {{tableData?.client_contact_name}}</p>
+                <p><b>Email: </b> {{tableData?.client_email}}</p>
+                <p><b>Telephone: </b> {{tableData?.client_telephone}}</p>
+              </span>
+              <span *ngIf="tableData?.error">
+                <p>{{tableData?.error}}</p>
+              </span>
+            </div>
+            <div class="main-subdetail py-1">
+              <h2><b>Status</b></h2>
+              <p>{{tableData?.project_status}}</p>
+            </div>
+            <div class="note-detail py-1">
+              <h2><b>Add Note</b></h2>
+              <ion-textarea class="border border-secondary p-1" placeholder="Enter any notes here...">
+              </ion-textarea>
+              <ion-button expand="fill">Submit</ion-button>
+            </div>
+            <div class="note-detail py-1">
+              <h2><b>Upload Image</b></h2>
+              <ion-button expand="fill" color="success" class="mt-3">Upload Image</ion-button>
+            </div>
+          </div>
+
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="tableSwitch=='4'">
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>INVOICE INFO</h3>
+      </div>
+      <ion-list class="main-list">
+
+        <ion-item lines="none">
+          <ion-label>
+            <ion-label>
+              <div class="main-detail">
+                <h3><b>Name: </b>{{tableData?.title}} </h3>
+                <h3><b>Amount: </b>{{tableData?.client_invoice_amount}} </h3>
+                <!-- <h3 id="projects"><b>Issue / Due Dates: </b>14/02/2020 </h3> -->
+                <div class="main-subdetail">
+                  <h2><b>Issue / Due Dates:</b></h2>
+                  <p><b>Invoice Date: </b> {{tableData?.invoice_date}}</p>
+                  <p><b>Due Date: </b> {{tableData?.due_date}}</p>
+                </div>
+                <div class="main-subdetail">
+                  <h2><b>Client Details</b></h2>
+                  <p><b>Name: </b> {{tableData?.client_contact_name}}</p>
+                </div>
+                <div class="main-subdetail">
+                  <h2><b>Status</b></h2>
+                  <p class="set-content">{{tableData?.invoice_status}}</p>
+                </div>
+              </div>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="tableSwitch=='5'">
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>ESTIMATE INFO</h3>
+      </div>
+      <ion-list class="main-list">
+
+        <ion-item lines="none">
+          <ion-label>
+            <ion-label>
+              <div class="main-detail">
+                <h3><b>Name: </b>
+                  <span innerHTML="{{tableData?.title}}"></span>
+                </h3>
+                <!-- <h3><b>Amount: </b>$20 </h3> -->
+                <!-- <h3 id="projects"><b>Issue / Due Dates: </b>14/02/2020 </h3> -->
+                <div class="main-subdetail">
+                  <h2><b>Client Details</b></h2>
+                  <p><b>Company Name: </b> {{tableData?.client_company_name}}</p>
+                  <p><b>Contact Name: </b> {{tableData?.client_contact_name}}</p>
+                  <p><b>Email: </b> {{tableData?.client_email}}</p>
+                  <p><b>Telephone: </b> {{tableData?.client_telephone}}</p>
+                </div>
+                <div class="main-subdetail">
+                  <h2><b>Status</b></h2>
+                  <p class="set-content">{{tableData?.estimate_status}}</p>
+                </div>
+              </div>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="tableSwitch=='6'">
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>PAYMENT INFO</h3>
+      </div>
+      <ion-list class="main-list">
+
+        <ion-item lines="none">
+          <ion-label>
+            <ion-label>
+              <div class="main-detail">
+                <h3><b>Name: </b>Paul Molive </h3>
+                <h3><b>Amount: </b>$80 </h3>
+                <h3 id="projects"><b>Date: </b>14/02/2020 </h3>
+                <div class="main-subdetail">
+                  <h2><b>Client Details</b></h2>
+                  <p><b>Company Name: </b> </p>
+                  <p><b>Contact Name:: </b> James Findlay</p>
+                  <p><b>Email: </b> james@elitermg.com</p>
+                  <p><b>Telephone: </b> 16047571117/p>
+                </div>
+                <div class="main-subdetail">
+                  <h2><b>Status</b></h2>
+                  <p>The contract has not yet been sent to the client.</p>
+                </div>
+              </div>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

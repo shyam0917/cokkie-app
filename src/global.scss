@@ -1,0 +1,422 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@media (prefers-color-scheme: dark) {
+  /*
+   * Dark Colors
+   * -------------------------------------------
+   */
+
+  body {
+    --ion-color-primary: #428cff;
+    --ion-color-primary-rgb: 66, 140, 255;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #3a7be0;
+    --ion-color-primary-tint: #5598ff;
+
+    --ion-color-secondary: #50c8ff;
+    --ion-color-secondary-rgb: 80, 200, 255;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #46b0e0;
+    --ion-color-secondary-tint: #62ceff;
+
+    --ion-color-tertiary: #6a64ff;
+    --ion-color-tertiary-rgb: 106, 100, 255;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+    --ion-color-tertiary-shade: #5d58e0;
+    --ion-color-tertiary-tint: #7974ff;
+
+    --ion-color-success: #2fdf75;
+    --ion-color-success-rgb: 47, 223, 117;
+    --ion-color-success-contrast: #000000;
+    --ion-color-success-contrast-rgb: 0, 0, 0;
+    --ion-color-success-shade: #29c467;
+    --ion-color-success-tint: #44e283;
+
+    --ion-color-warning: #ffd534;
+    --ion-color-warning-rgb: 255, 213, 52;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0, 0, 0;
+    --ion-color-warning-shade: #e0bb2e;
+    --ion-color-warning-tint: #ffd948;
+
+    --ion-color-danger: #ff4961;
+    --ion-color-danger-rgb: 255, 73, 97;
+    --ion-color-danger-contrast: #ffffff;
+    --ion-color-danger-contrast-rgb: 255, 255, 255;
+    --ion-color-danger-shade: #e04055;
+    --ion-color-danger-tint: #ff5b71;
+
+    --ion-color-dark: #f4f5f8;
+    --ion-color-dark-rgb: 244, 245, 248;
+    --ion-color-dark-contrast: #000000;
+    --ion-color-dark-contrast-rgb: 0, 0, 0;
+    --ion-color-dark-shade: #d7d8da;
+    --ion-color-dark-tint: #f5f6f9;
+
+    --ion-color-medium: #989aa2;
+    --ion-color-medium-rgb: 152, 154, 162;
+    --ion-color-medium-contrast: #000000;
+    --ion-color-medium-contrast-rgb: 0, 0, 0;
+    --ion-color-medium-shade: #86888f;
+    --ion-color-medium-tint: #a2a4ab;
+
+    --ion-color-light: #222428;
+    --ion-color-light-rgb: 34, 36, 40;
+    --ion-color-light-contrast: #ffffff;
+    --ion-color-light-contrast-rgb: 255, 255, 255;
+    --ion-color-light-shade: #1e2023;
+    --ion-color-light-tint: #383a3e;
+  }
+
+  /*
+   * iOS Dark Theme
+   * -------------------------------------------
+   */
+
+  .ios body {
+    --ion-background-color: #000000;
+    --ion-background-color-rgb: 0, 0, 0;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+
+    --ion-color-step-50: #0d0d0d;
+    --ion-color-step-100: #1a1a1a;
+    --ion-color-step-150: #262626;
+    --ion-color-step-200: #333333;
+    --ion-color-step-250: #404040;
+    --ion-color-step-300: #4d4d4d;
+    --ion-color-step-350: #595959;
+    --ion-color-step-400: #666666;
+    --ion-color-step-450: #737373;
+    --ion-color-step-500: #808080;
+    --ion-color-step-550: #8c8c8c;
+    --ion-color-step-600: #999999;
+    --ion-color-step-650: #a6a6a6;
+    --ion-color-step-700: #b3b3b3;
+    --ion-color-step-750: #bfbfbf;
+    --ion-color-step-800: #cccccc;
+    --ion-color-step-850: #d9d9d9;
+    --ion-color-step-900: #e6e6e6;
+    --ion-color-step-950: #f2f2f2;
+
+    --ion-toolbar-background: #0d0d0d;
+
+    --ion-item-background: #1c1c1c;
+    --ion-item-background-activated: #313131;
+  }
+
+
+  /*
+   * Material Design Dark Theme
+   * -------------------------------------------
+   */
+
+  .md body {
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18, 18, 18;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+
+    --ion-border-color: #222222;
+
+    --ion-color-step-50: #1e1e1e;
+    --ion-color-step-100: #2a2a2a;
+    --ion-color-step-150: #363636;
+    --ion-color-step-200: #414141;
+    --ion-color-step-250: #4d4d4d;
+    --ion-color-step-300: #595959;
+    --ion-color-step-350: #656565;
+    --ion-color-step-400: #717171;
+    --ion-color-step-450: #7d7d7d;
+    --ion-color-step-500: #898989;
+    --ion-color-step-550: #949494;
+    --ion-color-step-600: #a0a0a0;
+    --ion-color-step-650: #acacac;
+    --ion-color-step-700: #b8b8b8;
+    --ion-color-step-750: #c4c4c4;
+    --ion-color-step-800: #d0d0d0;
+    --ion-color-step-850: #dbdbdb;
+    --ion-color-step-900: #e7e7e7;
+    --ion-color-step-950: #f3f3f3;
+
+    --ion-item-background: #1A1B1E;
+  }
+
+  ion-title.title-large {
+    --color: white;
+  }
+}
+
+@font-face {
+  font-family: 'TeXGyrePagella-Regular';
+  src: url('/assets/fonts/TeXGyrePagella-Regular.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TeXGyrePagella-Regular';
+  src: url('/assets/fonts/TeXGyrePagella-Regular.otf') format('opentype'),
+    url('/assets/fonts/TeXGyrePagella-Regular.ttf') format('truetype'), url('/assets/fonts/TeXGyrePagella-Regular.svg#TeXGyrePagella-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+a:hover {
+  text-decoration: none;
+}
+
+/**HOMPAGE CSS: START**/
+.app-layout {
+  background: #000;
+  color: #fff;
+  font-family: 'TeXGyrePagella-Regular';
+  padding: 10px 0;
+  // width: 600px;
+  margin: auto;
+}
+
+.app-layout .logo img {
+  width: 100%;
+}
+
+.app-layout .heading {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.app-layout .heading .date {
+  font-size: 20px;
+}
+
+.app-content {
+  text-align: center;
+}
+
+.app-content .icon-box {
+  position: relative;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  margin: 20px 5px;
+  box-shadow: inset 10px 13px 15px -10px rgba(255, 255, 255, 0.8), inset -10px -13px 15px -10px rgba(255, 255, 255, 0.8);
+  transition: all 0.6s cubic-bezier(.25, .8, .25, 1);
+
+}
+
+.app-content .icon-box:hover {
+  box-shadow: inset 12px 13px 15px -10px rgba(255, 255, 255, 1), inset -12px -13px 15px -10px rgba(255, 255, 255, 1);
+}
+
+.app-content .icon-box img {
+  max-width: 100%;
+  height: 100px;
+}
+
+.app-content .icon-box .notification p {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  background: #fe000b;
+  border-radius: 50%;
+  width: 25px;
+  font-size: 14px;
+  height: 25px;
+  font-weight: bold;
+  line-height: 5px;
+  margin: 0;
+}
+
+.app-content .icon-box img {
+  max-width: 100%;
+  height: 80px;
+  padding: 10px 20px 0 20px;
+}
+
+.app-content .icon-box p {
+  padding: 10px 0;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.appointment {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.appointment .appointment-detail {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  border: 2px solid #757575;
+  border-radius: 30px;
+}
+
+.appointment .appointment-detail p {
+  margin: 0;
+  font-size: 20px;
+}
+
+/**HOMPAGE CSS: END**/
+
+/**SIGNUP & SIGNIN CSS: START**/
+.form-login {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.social-signup {
+  margin: 30px 0;
+}
+
+.social-signup a {
+  margin: 0 10px;
+}
+
+.form-login form .form-control {
+  padding: 20px;
+  font-size: 18px;
+  height: 50px;
+  margin: 20px 0px;
+}
+
+.form-login form .form-control {
+  padding: 30px 20px;
+  font-size: 20px;
+  margin: 20px 0px;
+}
+
+.form-login form .btn-submit {
+  background: transparent;
+  color: #fff;
+  box-shadow: none;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  border: 2px solid #fff;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.form-login form p {
+  font-size: 16px;
+}
+
+.form-login form p a {
+  color: #fff;
+  font-weight: bold;
+}
+
+/**SIGNUP & SIGNIN CSS: END**/
+
+
+/**ADDTIONAL CSS: START**/
+
+.logo {
+  background-color: black;
+  padding-left: 0 !important;
+}
+
+.customize-toolbar {
+  --background: black !important;
+}
+
+.toolbar-container {
+  --padding: 0px !important;
+}
+
+.set-height {
+  height: 100%;
+}
+.can-go-back > ion-header ion-back-button {
+  margin-left: 5px;
+}
+
+/**ADDTIONAL CSS: END**/
+
+
+@media screen and (max-width: 479px) {
+  .app-layout {
+    width: 100%;
+  }
+
+  .app-content .icon-box {
+    margin: 15px 0;
+  }
+
+  .app-content .icon-box p {
+    font-size: 9px;
+  }
+
+  .app-content .icon-box img {
+    height: 65px;
+  }
+
+  .app-layout .heading h3,
+  .appointment h3 {
+    font-size: 22px;
+  }
+
+  .appointment .appointment-detail p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .form-login form .form-control {
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .form-login form .btn-submit {
+    font-size: 16px;
+  }
+
+  .form-login {
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .app-content .icon-box img {
+    height: 60px;
+  }
+
+  .app-content .icon-box p {
+    font-size: 8px;
+  }
+}

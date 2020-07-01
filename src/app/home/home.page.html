@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar class="customize-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="app-layout">
+    <div class="container">
+      <div class="heading">
+        <h3>STAFF PORTAL</h3>
+        <div class="date"> JUNE 1/10/2020 : 11:35AM</div>
+      </div>
+      <div class="app-content">
+        <div class="row">
+          <div class="col-4">
+            <div class="icon-box" routerLink="/calender">
+
+              <img src="assets/img/icon-1.png">
+              <p>SCHEDULE</p>
+              <div class="notification">
+                <p>3</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/1">
+              <img src="assets/img/icon-2.png">
+              <p>CLIENTS</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box bg-secondary" [attr.disabled]=true>
+              <img src="assets/img/icon-3.png">
+              <p>CLOCK IN/OUT</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/3">
+              <img src="assets/img/icon-4.png">
+              <p>PROJECTS</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box">
+              <img src="assets/img/icon-5.png">
+              <p>PROJ PHOTO</p>
+            </div>
+          </div>
+          <!-- routerLink="/main-list/7" -->
+          <div class="col-4">
+            <div class="icon-box bg-secondary">
+              <img src="assets/img/icon-6.png" [attr.disabled]=true>
+              <p>RECEIPT UPLOAD</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/4">
+              <img src="assets/img/icon-7.png">
+              <p>INVOICES</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/5">
+              <img src="assets/img/icon-8.png">
+              <p>ESTIMATE</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/6">
+              <img src="assets/img/icon-9.png">
+              <p>PAYMENT</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/7">
+              <img src="assets/img/icon-9.png">
+              <p>Check PAYMENT</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="appointment">
+        <h3>TODAYS APPOINTMENTS</h3>
+        <div class="appointment-detail">
+          <p>9:00AM - JOB SITE #1 -VIEW DETAILS</p>
+          <p>12:15PM - JOB SITE #2 -VIEW DETAILS</p>
+          <p>3:30PM - JOB SITE #3 -VIEW DETAILS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

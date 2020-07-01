@@ -1,0 +1,85 @@
+/**LIST: START**/
+.main-list {
+  --ion-background-color: #000 !important;
+}
+
+.main-list ion-item {
+  --ion-background-color: #fff !important;
+  --padding-top: 10px !important;
+  --padding-bottom: 10px !important;
+}
+
+.main-list ion-avatar {
+  margin: 0 !important;
+}
+
+.main-list .icon {
+  font-size: 25px;
+}
+
+.main-list .item {
+  padding: 10px;
+}
+
+.main-list .f-icon {
+  font-size: 15px;
+}
+
+.main-subdetail {
+  border-top: 1px solid #bfbfbf;
+  padding: 10px 0;
+}
+
+.main-subdetail h2 {
+  padding-bottom: 5px;
+}
+
+.main-detail #projects {
+  padding: 3px 0 10px 0;
+}
+
+.main-detail p,
+.main-detail h3 {
+  font-size: 15px;
+}
+
+.set-content {
+  white-space: normal;
+}
+
+.main-detail h2,
+.main-detail h3,
+.main-detail p {
+  white-space: normal;
+}
+
+.container {
+  background-color: black;
+}
+
+.note-detail {
+  border-top: 1px solid #bfbfbf;
+  padding: 10px 0;
+}
+
+.set-p p,
+.set-p h3,
+.set-p b {
+  margin-bottom: 0px !important;
+}
+
+.set-p b {
+  font-size: 15px !important;
+}
+
+.set-p h2 b {
+  font-size: 17px !important;
+}
+
+.set-p .main-subdetail h2,
+.set-p .note-detail h2 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/**LIST: START**/

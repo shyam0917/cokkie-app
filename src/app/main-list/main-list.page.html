@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar class="customize-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3 *ngIf="switch=='1'">CLIENTS</h3>
+        <h3 *ngIf="switch=='2'">CLOCK IN/OUT</h3>
+        <h3 *ngIf="switch=='3'">PROJECTS</h3>
+        <h3 *ngIf="switch=='4'">INVOICES</h3>
+        <h3 *ngIf="switch=='5'">ESTIMATE</h3>
+        <h3 *ngIf="switch=='6'">PAYMENT</h3>
+        <h3 *ngIf="switch=='7'">RECEIPT UPLOAD</h3>
+      </div>
+      <ion-searchbar *ngIf="switch!='7'" class="search-bar"></ion-searchbar>
+
+      <!-- Client Details -->
+      <ion-list *ngIf="switch=='1'" class="main-list">
+        <ion-item *ngFor="let item of testObject | keyvalue" lines="none" routerLink="/table/1"
+          [queryParams]="item.value">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2 class="set-content" innerHTML="{{item.value?.title}} - <b>{{item.value?.post_status}}</b>"></h2>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <!--  -->
+      <ion-list *ngIf="switch=='2'" class="main-list">
+        <ion-item lines="none" routerLink="/table/2">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>James </h2>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/2">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Bob</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <!-- project Details -->
+      <ion-list *ngIf="switch=='3'" class="main-list">
+        <h5 *ngIf="errMessage" class="text-center text-danger">{{errMessage}}</h5>
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/3" [queryParams]="item">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
+              <h3><b><i class="far fa-calendar-alt"></i> : </b>{{item?.post_modified | date: 'dd/MM/yyyy'}}</h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <!-- Invoice Details -->
+      <ion-list *ngIf="switch=='4'" class="main-list">
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/4" [queryParams]="item">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
+              <h3><b>Amount: </b>{{item?.client_invoice_amount}} </h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <!-- Estimate Details -->
+      <ion-list *ngIf="switch=='5'" class="main-list">
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/5" [queryParams]="item">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
+              <!-- <h3><b>Amount: </b>$80 </h3> -->
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="switch=='6'" class="main-list">
+        <ion-item lines="none" routerLink="/table/6">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>Paul Molive </h2>
+              <h3><b>Amount: </b>$80 </h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/6">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Richard </h2>
+            <h3><b>Amount: </b>$20 </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="invoice-upload" *ngIf="switch=='7'">
+        <p>Please upload the receipt. (Only JPG, PNG and GIF files are allowed)</p>
+        <ion-button color="light">Upload File</ion-button>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="customize-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3>STAFF CALENDAR SYSTEM</h3>
+      </div>  
+      <ion-list class="select-staff">      
+        <ion-item>
+          <ion-label>Select Staff</ion-label>
+          <ion-select okText="Okay" cancelText="Dismiss">
+            <ion-select-option >briannormoye(Brian normoye)</ion-select-option>
+            <ion-select-option>development(Dev</ion-select-option>
+            <ion-select-option >elitermg(elitermg</ion-select-option>
+            <ion-select-option >BroJon cooke(Jon Cooke)wn</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+      </ion-list>
+
+      <ion-calendar [(ngModel)]="date"
+              (change)="onChange($event)"
+              [type]="type"
+              [format]="'YYYY-MM-DD'">
+</ion-calendar>
+    </div>
+  </div>
+</ion-content>
+
+

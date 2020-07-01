@@ -1,0 +1,56 @@
+/**LIST: START**/
+.search-bar {
+  background: #fff;
+  border-radius: 50px;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.searchbar-input-container input {
+  --background: #fff !important;
+}
+
+input {
+  --ion-background: red !important;
+}
+
+.main-list {
+  --ion-background-color: #000 !important;
+}
+
+.main-list ion-item {
+  --ion-background-color: #fff !important;
+  --padding-top: 10px !important;
+  --padding-bottom: 10px !important;
+}
+
+.main-list ion-avatar {
+  margin: 0 !important;
+}
+
+.main-list .icon {
+  font-size: 25px;
+}
+
+.main-list .item {
+  padding: 10px;
+}
+
+.main-list .f-icon {
+  font-size: 15px;
+}
+
+.invoice-upload {
+  margin-top: 50px;
+}
+
+.set-content {
+  white-space: normal;
+}
+
+.container {
+  background-color: black;
+}
+
+/**LIST: START**/
