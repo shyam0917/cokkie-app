@@ -33,7 +33,10 @@ export class SignupPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.menu.swipeGesture(false);
+    setTimeout(() => {
+      this.menu.swipeGesture(false);
+    }, 2000);
+
 
   }
 

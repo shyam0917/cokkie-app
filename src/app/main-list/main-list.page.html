@@ -7,7 +7,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+  <iframe *ngIf="switch=='6'" class= 'webPage' src="https://cands.ca/one-time-payment/" allowfullscreen></iframe>
+
+<div *ngIf="errorMessage" class="text-center text-danger">{{errMessage}}</div>
+
+<ion-content *ngIf="switch!='6'">
   <div class="app-layout set-height">
     <div class="container">
       <div class="heading">
@@ -16,12 +20,13 @@
         <h3 *ngIf="switch=='3'">PROJECTS</h3>
         <h3 *ngIf="switch=='4'">INVOICES</h3>
         <h3 *ngIf="switch=='5'">ESTIMATE</h3>
-        <h3 *ngIf="switch=='6'">PAYMENT</h3>
+        <!-- <h3 *ngIf="switch=='6'">PAYMENT</h3> -->
         <h3 *ngIf="switch=='7'">RECEIPT UPLOAD</h3>
       </div>
-      <ion-searchbar *ngIf="switch!='7'" class="search-bar"></ion-searchbar>
-
-      <!-- Client Details -->
+      <ion-item><ion-searchbar [(ngModel)]="searchQuery" *ngIf="switch!='7'" class="search-bar" ></ion-searchbar><ion-buttons slot="end">
+        <ion-button (click)="searchData(switch)" color="primary" fill="solid">Search</ion-button></ion-buttons></ion-item>
+     
+        <!-- Client Details -->
       <ion-list *ngIf="switch=='1'" class="main-list">
         <ion-item *ngFor="let item of testObject | keyvalue" lines="none" routerLink="/table/1"
           [queryParams]="item.value">
@@ -104,7 +109,7 @@
         </ion-item>
       </ion-list>
 
-      <ion-list *ngIf="switch=='6'" class="main-list">
+      <!-- <ion-list *ngIf="switch=='6'" class="main-list">
         <ion-item lines="none" routerLink="/table/6">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
@@ -125,7 +130,7 @@
             <h3><b>Amount: </b>$20 </h3>
           </ion-label>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
 
       <div class="invoice-upload" *ngIf="switch=='7'">
         <p>Please upload the receipt. (Only JPG, PNG and GIF files are allowed)</p>
@@ -135,3 +140,4 @@
     </div>
   </div>
 </ion-content>
+

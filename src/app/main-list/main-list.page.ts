@@ -12,6 +12,7 @@ export class MainListPage implements OnInit {
   categoryArr: any = [];
   testObject: any = {};
   errMessage: string = "";
+  searchQuery: string = "";
 
   constructor(private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService) { }
@@ -31,7 +32,6 @@ export class MainListPage implements OnInit {
           this.testObject = res;
         }
 
-
       }, err => {
         console.log("err", err);
       })
@@ -40,7 +40,6 @@ export class MainListPage implements OnInit {
     // get project Data
     if (this.switch && this.switch == '3') {
       let clientID = JSON.parse(localStorage.getItem('userData'))['ID'];
-      console.log(clientID);
       const userId = new FormData();
       userId.append('id', clientID);
       this.categoryService.getProjectData(userId).subscribe(res => {
@@ -72,6 +71,56 @@ export class MainListPage implements OnInit {
     // get estimate Data
     if (this.switch && this.switch == '5') {
       this.categoryService.getEstimateData().subscribe(res => {
+        if (res['data']) {
+          this.categoryArr = res['data'];
+          console.log(this.categoryArr, res);
+        }
+
+      }, err => {
+        console.log("err", err);
+      })
+    }
+
+  }
+
+  searchData(sw){
+    console.log("yyy",sw,this.searchQuery);
+    if(sw=='1'){
+      this.categoryService.getSearchClientData(this.searchQuery).subscribe(res => {
+        if (res) {
+          this.testObject = res;
+        }
+
+      }, err => {
+        console.log("err", err);
+      })
+    }
+    else if(sw == '3'){
+      this.categoryService.getSearchProjectData(this.searchQuery).subscribe(res => {
+        if (res['data']) {
+          this.categoryArr = res['data'];
+          console.log(this.categoryArr, res, "api");
+        }
+
+      }, err => {
+        if (err['status'] == '404') {
+          this.errMessage = "Internal Error Occured";
+        }
+        console.log("err", err);
+      })
+    }
+    else if(sw == '4'){
+      this.categoryService.getSearchInvoiceData(this.searchQuery).subscribe(res => {
+        if (res && res['data']) {
+          this.categoryArr = res['data'];
+        }
+
+      }, err => {
+        console.log("err", err);
+      })
+    }
+    else if(sw == '5'){
+      this.categoryService.getSearchEstimateData(this.searchQuery).subscribe(res => {
         if (res['data']) {
           this.categoryArr = res['data'];
           console.log(this.categoryArr, res);
