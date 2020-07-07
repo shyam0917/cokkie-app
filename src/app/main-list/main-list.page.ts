@@ -27,9 +27,10 @@ export class MainListPage implements OnInit {
 
     // get Client Data
     if (this.switch && this.switch == '1') {
-      this.categoryService.getClientData().subscribe(res => {
+      this.categoryService.getSearchClientData().subscribe(res => {
         if (res) {
           this.testObject = res;
+          console.log("yyy",this.testObject.keys)
         }
 
       }, err => {
@@ -39,10 +40,7 @@ export class MainListPage implements OnInit {
 
     // get project Data
     if (this.switch && this.switch == '3') {
-      let clientID = JSON.parse(localStorage.getItem('userData'))['ID'];
-      const userId = new FormData();
-      userId.append('id', clientID);
-      this.categoryService.getProjectData(userId).subscribe(res => {
+      this.categoryService.getSearchProjectData().subscribe(res => {
         if (res['data']) {
           this.categoryArr = res['data'];
           console.log(this.categoryArr, res, "apiiiiiiiiii");
@@ -58,7 +56,7 @@ export class MainListPage implements OnInit {
 
     // get invoice Data
     if (this.switch && this.switch == '4') {
-      this.categoryService.getInvoiceData().subscribe(res => {
+      this.categoryService.getSearchInvoiceData().subscribe(res => {
         if (res && res['data']) {
           this.categoryArr = res['data'];
         }
@@ -70,7 +68,7 @@ export class MainListPage implements OnInit {
 
     // get estimate Data
     if (this.switch && this.switch == '5') {
-      this.categoryService.getEstimateData().subscribe(res => {
+      this.categoryService.getSearchEstimateData().subscribe(res => {
         if (res['data']) {
           this.categoryArr = res['data'];
           console.log(this.categoryArr, res);
@@ -133,5 +131,8 @@ export class MainListPage implements OnInit {
 
   }
 
+  isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
 
 }

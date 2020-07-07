@@ -31,7 +31,7 @@ export class TablePage implements OnInit {
 
     // get Client Data
     if (this.tableSwitch && this.tableSwitch == '1') {
-      this.categoryService.getClientData().subscribe(res => {
+      this.categoryService.getSearchClientData().subscribe(res => {
         if (res['length']) {
           this.tableArr = res;
         }
@@ -46,7 +46,7 @@ export class TablePage implements OnInit {
       let clientID = JSON.parse(localStorage.getItem('userData'))['ID'];
       const userId = new FormData();
       userId.append('id', clientID);
-      this.categoryService.getProjectData(userId).subscribe(res => {
+      this.categoryService.getSearchProjectData().subscribe(res => {
         if (res['data']) {
           this.tableArr = res['data'];
         }
@@ -59,7 +59,7 @@ export class TablePage implements OnInit {
 
     // get estimate Data
     if (this.tableSwitch && this.tableSwitch == '5') {
-      this.categoryService.getEstimateData().subscribe(res => {
+      this.categoryService.getSearchEstimateData().subscribe(res => {
         if (res['length']) {
           this.tableArr = res;
         }
