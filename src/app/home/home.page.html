@@ -12,7 +12,7 @@
     <div class="container">
       <div class="heading">
         <h3>STAFF PORTAL</h3>
-        <div class="date"> JUNE 1/10/2020 : 11:35AM</div>
+        <div class="date"> {{getCurrentDate | date}} {{getCurrentDate | date:'shortTime'}}</div>
       </div>
       <div class="app-content">
         <div class="row">
@@ -81,14 +81,30 @@
               <p>Check PAYMENT</p>
             </div>
           </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/8">
+              <img src="assets/img/icon-9.png">
+              <p>View All Work Orders</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/9">
+              <img src="assets/img/icon-9.png">
+              <p>Create Service Work Order</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="icon-box" routerLink="/main-list/10">
+              <img src="assets/img/icon-9.png">
+              <p>Create Electrical work order</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="appointment">
         <h3>TODAYS APPOINTMENTS</h3>
-        <div class="appointment-detail">
-          <p>9:00AM - JOB SITE #1 -VIEW DETAILS</p>
-          <p>12:15PM - JOB SITE #2 -VIEW DETAILS</p>
-          <p>3:30PM - JOB SITE #3 -VIEW DETAILS</p>
+        <div *ngFor="let appointment of appointmentArray; let i =index" class="appointment-detail">
+          <p>{{appointment.starttime | date:'shortTime'}} - #{{i+1}} {{appointment.title}} - {{appointment.startdatetime | date}}  </p>
         </div>
       </div>
     </div>

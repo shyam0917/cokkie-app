@@ -6,10 +6,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CategoryService {
-userId:string="";
+  userId: string = "";
   baseUrl = 'https://cands.ca/wp-json/custom-plugin/';
-  constructor(private http: HttpClient) { 
-this.userId = JSON.parse(localStorage.getItem('userData'))['ID'];
+  constructor(private http: HttpClient) {
+    this.userId = JSON.parse(localStorage.getItem('userData'))['ID'];
   }
 
   //get project category details
@@ -19,13 +19,13 @@ this.userId = JSON.parse(localStorage.getItem('userData'))['ID'];
   //   );
   // }
 
-    // get project search Data
-    getSearchProjectData(searchText=""){
-      let formData = new FormData();
-      formData.append('searchText',searchText);
-      formData.append('user_id',this.userId)
-      return this.http.post(this.baseUrl + 'projects',formData);
-    }
+  // get project search Data
+  getSearchProjectData(searchText = "") {
+    let formData = new FormData();
+    formData.append('searchText', searchText);
+    formData.append('user_id', this.userId)
+    return this.http.post(this.baseUrl + 'projects', formData);
+  }
 
   //get client category details
   // getClientData() {
@@ -33,10 +33,10 @@ this.userId = JSON.parse(localStorage.getItem('userData'))['ID'];
   // }
 
   // get client search Data
-  getSearchClientData(searchText=""){
+  getSearchClientData(searchText = "") {
     let formData = new FormData();
-    formData.append('searchText',searchText);
-    formData.append('user_id',this.userId)
+    formData.append('searchText', searchText);
+    formData.append('user_id', this.userId)
     return this.http.post(this.baseUrl + 'clients', formData);
   }
 
@@ -45,13 +45,13 @@ this.userId = JSON.parse(localStorage.getItem('userData'))['ID'];
   //   return this.http.get(this.baseUrl + 'invoice')
   // }
 
-    // get invoice search Data
-    getSearchInvoiceData(searchText=""){
-      let formData = new FormData();
-      formData.append('searchText',searchText);
-      formData.append('user_id',this.userId)
-      return this.http.post(this.baseUrl + 'invoice',formData);
-    }
+  // get invoice search Data
+  getSearchInvoiceData(searchText = "") {
+    let formData = new FormData();
+    formData.append('searchText', searchText);
+    formData.append('user_id', this.userId)
+    return this.http.post(this.baseUrl + 'invoice', formData);
+  }
 
   //get estimate category details
   // getEstimateData() {
@@ -60,11 +60,33 @@ this.userId = JSON.parse(localStorage.getItem('userData'))['ID'];
   //   );
   // }
 
-    // get estimate search Data
-    getSearchEstimateData(searchText=""){
+  // get estimate search Data
+  getSearchEstimateData(searchText = "") {
+    let formData = new FormData();
+    formData.append('searchText', searchText);
+    formData.append('user_id', this.userId)
+    return this.http.post(this.baseUrl + 'estimate', formData);
+  }
+
+  // get schedule data
+  getScheduleData() {
+    let formData = new FormData();
+    formData.append('user_id', this.userId)
+    return this.http.post(this.baseUrl + 'schedule', formData);
+  }
+
+    // get schedule data
+    getScheduleDataById(id) {
       let formData = new FormData();
-      formData.append('searchText',searchText);
-      formData.append('user_id',this.userId)
-      return this.http.post(this.baseUrl + 'estimate',formData);
+      formData.append('id', id)
+      return this.http.post(this.baseUrl + 'schedule', formData);
     }
+
+
+  // get dropdown data
+  getScheduleDropdownData() {
+    let formData = new FormData();
+    formData.append('user_id', this.userId)
+    return this.http.post(this.baseUrl + 'getuserschedule', formData);
+  }
 }

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CalenderPageRoutingModule } from './calender-routing.module';
-import { CalendarModule } from 'ion2-calendar';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 import { CalenderPage } from './calender.page';
 
@@ -14,7 +14,7 @@ import { CalenderPage } from './calender.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CalendarModule,
+    NgCalendarModule,
     CalenderPageRoutingModule
   ],
   declarations: [CalenderPage]
