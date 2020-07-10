@@ -242,7 +242,7 @@
   <div class="app-layout set-height">
     <div class="container">
       <div class="heading">
-        <h3>PAYMENT INFO</h3>
+        <h3>WORK ORDER DETAILS</h3>
       </div>
       <ion-list class="main-list">
 
@@ -250,19 +250,16 @@
           <ion-label>
             <ion-label>
               <div class="main-detail">
-                <h3><b>Name: </b>Paul Molive </h3>
-                <h3><b>Amount: </b>$80 </h3>
-                <h3 id="projects"><b>Date: </b>14/02/2020 </h3>
+                <h3 class="my-2"><b>#Invoice: </b>{{tableData?.invoice_id}}</h3>
+                <h3 class="my-2"><b>Work Type: </b>{{tableData?.work_type}}</h3>
+                <h3 class="my-2"><b>Work Order: </b>{{tableData?.work_order_number}}</h3>
+                <h3 class="my-2"><b>Bill To: </b>{{tableData?.bill_to}}</h3>
+                <h3 class="my-2"><b>Work Requested: </b>{{tableData?.work_request}}</h3>
+                <h3 class="my-2"><b>Status: </b>{{tableData?.work_status}}</h3>
                 <div class="main-subdetail">
-                  <h2><b>Client Details</b></h2>
-                  <p><b>Company Name: </b> </p>
-                  <p><b>Contact Name:: </b> James Findlay</p>
-                  <p><b>Email: </b> james@elitermg.com</p>
-                  <p><b>Telephone: </b> 16047571117/p>
-                </div>
-                <div class="main-subdetail">
-                  <h2><b>Status</b></h2>
-                  <p>The contract has not yet been sent to the client.</p>
+                  <h2><b>Action</b></h2>
+                  <ion-button expand="fill" color="success" (click)="openIFrame(tableData.id)" class="mt-3">Edit</ion-button>
+                  <ion-button expand="fill" color="danger" class="mt-3">Delete</ion-button>
                 </div>
               </div>
             </ion-label>

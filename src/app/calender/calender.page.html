@@ -11,21 +11,22 @@
   <ion-spinner name="crescent" color="primary"></ion-spinner>
 </div>
 
-  <div class="app-layout">
-    <div class="container">
-      <div class="heading">
-        <h3>STAFF CALENDAR SYSTEM</h3>
-      </div>  
-      <ion-list class="select-staff">      
-        <ion-item>
-          <ion-label>Select Staff</ion-label>
-          <ion-select okText="Okay" cancelText="Dismiss" (ionChange)="onSelectChange($event)">
-            <ion-select-option *ngFor="let item of dropdownArray" value="{{item.id}}" >{{item.user_login}}({{item.display_name}})</ion-select-option>
-          </ion-select>
-        </ion-item>
-      
-      </ion-list>
-</div>
+<div class="app-layout">
+  <div class="container">
+    <div class="heading">
+      <h3>STAFF CALENDAR SYSTEM</h3>
+    </div>
+    <ion-list class="select-staff">
+      <ion-item>
+        <ion-label>Select Staff</ion-label>
+        <ion-select okText="Okay" cancelText="Dismiss" (ionChange)="onSelectChange($event)">
+          <ion-select-option *ngFor="let item of dropdownArray" value="{{item.id}}">
+            {{item.user_login}}({{item.display_name}})</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+  </div>
 </div>
 <div class="text-center">
   <h5>{{viewTitle}}</h5>
@@ -37,18 +38,14 @@
   </ion-buttons>
 </div>
 
-<ion-content >
+<ion-content>
 
-    <calendar [eventSource]="eventSource"
-              [calendarMode]="calendar.mode"
-              [currentDate]="calendar.currentDate"
-              (onCurrentDateChanged)="onCurrentDateChanged($event)"
-              (onEventSelected)="onEventSelected($event)"
-              (onTitleChanged)="onViewTitleChanged($event)"
-              (onTimeSelected)="onTimeSelected($event)"
-              step="30">
-    </calendar>
-  </ion-content>
+  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+    (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30">
+  </calendar>
 
-
-
+</ion-content>
+<div class="p-2 mt-1">
+  <ion-icon style="font-size: 25px;" name="add-circle-outline" (click)="openModal()"></ion-icon>
+</div>

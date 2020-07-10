@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { MyModalPage } from '../my-modal/my-modal.page';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { CategoryService } from '../services/category.service';
 export class CalenderPage implements OnInit {
     eventSource: any = [];
     viewTitle;
+    dataReturned: any;
     isLoading: boolean = false;
     dropdownArray: any = [];
     apiSource: any = [];
@@ -44,7 +47,8 @@ export class CalenderPage implements OnInit {
         }
     };
 
-    constructor(private categoryService: CategoryService) {
+    constructor(private categoryService: CategoryService,
+        public modalController: ModalController) {
         this.getDropdownData();
     }
 
@@ -53,9 +57,29 @@ export class CalenderPage implements OnInit {
         this.loadEvents();
     }
 
-    // loadEvents() {
-    //     this.eventSource = this.getEvents();
-    // }
+    doubleClickFunction() {
+        console.log("Rtr", "doubleclick");
+    }
+
+    async openModal() {
+        const modal = await this.modalController.create({
+          component: MyModalPage,
+          componentProps: {
+            "paramID": 123,
+            "paramTitle": "Test Title"
+          }
+        });
+    
+        modal.onDidDismiss().then((dataReturned) => {
+          if (dataReturned !== null) {
+            this.dataReturned = dataReturned.data;
+            console.log('Modal Sent Data :'+ dataReturned);
+            //alert('Modal Sent Data :'+ dataReturned);
+          }
+        });
+    
+        return await modal.present();
+      }
 
     getDropdownData() {
         this.categoryService.getScheduleDropdownData().subscribe(res => {

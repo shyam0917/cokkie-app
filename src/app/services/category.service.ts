@@ -68,6 +68,14 @@ export class CategoryService {
     return this.http.post(this.baseUrl + 'estimate', formData);
   }
 
+    // get work flow search Data
+    getSearchWorkorderData(searchText = "") {
+      let formData = new FormData();
+      formData.append('searchText', searchText);
+      formData.append('user_id', this.userId)
+      return this.http.post(this.baseUrl + 'workorder', formData);
+    }
+
   // get schedule data
   getScheduleData() {
     let formData = new FormData();

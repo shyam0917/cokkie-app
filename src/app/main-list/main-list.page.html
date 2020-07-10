@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-  <iframe *ngIf="switch=='6'" class= 'webPage' src="https://cands.ca/one_timepmnt.php" allowfullscreen></iframe>
+<iframe *ngIf="switch=='6'" class='webPage' src="https://cands.ca/one_timepmnt.php" allowfullscreen></iframe>
 
 <div *ngIf="errorMessage" class="text-center text-danger">{{errMessage}}</div>
 
@@ -28,10 +28,14 @@
         <h3 *ngIf="switch=='7'">RECEIPT UPLOAD</h3>
         <h3 *ngIf="switch=='8'">WORK ORDERS</h3>
       </div>
-      <ion-item><ion-searchbar [(ngModel)]="searchQuery" *ngIf="switch!='7'" class="search-bar" ></ion-searchbar><ion-buttons slot="end">
-        <ion-button (click)="searchData(switch)" color="primary" fill="solid">Search</ion-button></ion-buttons></ion-item>
-     
-        <!-- Client Details -->
+      <ion-item>
+        <ion-searchbar [(ngModel)]="searchQuery" *ngIf="switch!='7'" class="search-bar"></ion-searchbar>
+        <ion-buttons slot="end">
+          <ion-button (click)="searchData(switch)" color="primary" fill="solid">Search</ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <!-- Client Details -->
       <ion-list *ngIf="switch=='1'" class="main-list">
         <div *ngIf="isEmpty(testObject)" class="text-danger text-center">No Data Available</div>
         <ion-item *ngFor="let item of testObject | keyvalue" lines="none" routerLink="/table/1"
@@ -104,7 +108,7 @@
 
       <!-- Estimate Details -->
       <ion-list *ngIf="switch=='5'" class="main-list">
-        <div  *ngIf="emptyData" class="text-danger text-center">No Data Available</div>
+        <div *ngIf="emptyData" class="text-danger text-center">No Data Available</div>
         <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/5" [queryParams]="item">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
@@ -118,21 +122,21 @@
         </ion-item>
       </ion-list>
 
-            <!-- WorkFlow Details -->
-            <ion-list *ngIf="switch=='8'" class="main-list">
-              <div  *ngIf="emptyData" class="text-danger text-center">No Data Available</div>
-              <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/8" [queryParams]="item">
-                <ion-avatar slot="start">
-                  <span class="icon"><i class="fas fa-user-circle"></i></span>
-                </ion-avatar>
-                <ion-label>
-                  <ion-label>
-                    <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
-                    <!-- <h3><b>Amount: </b>$80 </h3> -->
-                  </ion-label>
-                </ion-label>
-              </ion-item>
-            </ion-list>
+      <!-- WorkFlow Details -->
+      <ion-list *ngIf="switch=='8'" class="main-list">
+        <div *ngIf="emptyData" class="text-danger text-center">No Data Available</div>
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/8" [queryParams]="item">
+          <!-- <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar> -->
+          <ion-label>
+            <ion-label>
+              <h2 class="set-content">Work Order - {{item?.work_order_number}}</h2>
+              <h3 class="set-content">Work Type - {{item?.work_type}}</h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+      </ion-list>
 
       <!-- <ion-list *ngIf="switch=='8'" class="main-list">
         <ion-item lines="none" routerLink="/table/6">
@@ -165,4 +169,3 @@
     </div>
   </div>
 </ion-content>
-

@@ -35,7 +35,7 @@ export class MainListPage implements OnInit {
       this.categoryService.getSearchClientData().subscribe(res => {
         if (res) {
           this.testObject = res;
-          this.isLoading=false;
+          this.isLoading = false;
         }
 
       }, err => {
@@ -107,6 +107,28 @@ export class MainListPage implements OnInit {
       })
     }
 
+    // get Workflow Data
+    if (this.switch && this.switch == '8') {
+      this.isLoading = true;
+      this.categoryService.getSearchWorkorderData().subscribe(res => {
+        if (res['data'] && res['data'].length > 0) {
+          this.categoryArr = res['data'];
+          this.emptyData = false;
+        }
+        else {
+          this.categoryArr = res['data'];
+          this.emptyData = true;
+        }
+        this.isLoading = false;
+
+      }, err => {
+        this.isLoading = false;
+        this.errMessage = "Internal Error Occurred"
+        console.log("err", err);
+      })
+    }
+
+
   }
 
   searchData(sw) {
@@ -161,6 +183,23 @@ export class MainListPage implements OnInit {
     else if (sw == '5') {
       this.isLoading = true;
       this.categoryService.getSearchEstimateData(this.searchQuery).subscribe(res => {
+        if (res['data'] && res['data'].length > 0) {
+          this.categoryArr = res['data'];
+          this.emptyData = false;
+        } else {
+          this.categoryArr = res['data'];
+          this.emptyData = true;
+        }
+        this.isLoading = false;
+
+      }, err => {
+        this.isLoading = false;
+        this.errMessage = "Internal Error Occured"
+      })
+    }
+    else if (sw == '8') {
+      this.isLoading = true;
+      this.categoryService.getSearchWorkorderData(this.searchQuery).subscribe(res => {
         if (res['data'] && res['data'].length > 0) {
           this.categoryArr = res['data'];
           this.emptyData = false;

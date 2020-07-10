@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="customize-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="switch=='1'"> 
+  <iframe class='webPage' src="https://cands.ca/candsproject/mechanical.php" allowfullscreen></iframe>
+</ion-content>
+
+
+<ion-content style="position: absolute;" *ngIf="switch=='2'"> 
+  <iframe class='webPage' src="https://cands.ca/candsproject/electrical.php" allowfullscreen></iframe>
+</ion-content>
+
+<ion-content *ngIf="switch=='3'"> 
+  <iframe class='webPage' [src]="editUrl.url"  allowfullscreen></iframe>
+</ion-content>

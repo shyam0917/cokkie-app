@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'payment',
     loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'iframe-form/:id',
+    loadChildren: () => import('./iframe-form/iframe-form.module').then( m => m.IframeFormPageModule)
+  },
+  {
+    path: 'my-modal',
+    loadChildren: () => import('./my-modal/my-modal.module').then( m => m.MyModalPageModule)
   }
 ];
 
