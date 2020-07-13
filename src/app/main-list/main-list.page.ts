@@ -13,6 +13,8 @@ export class MainListPage implements OnInit {
   emptyData: boolean = false;
   categoryArr: any = [];
   testObject: any = {};
+  itemIndex: number = -1;
+  showMore: boolean = false;
   errMessage: string = "";
   searchQuery: string = "";
 
@@ -25,6 +27,26 @@ export class MainListPage implements OnInit {
     this.switch = this.activatedRoute.snapshot.paramMap.get('id');
     this.getCategoryData();
     this.errMessage = "";
+  }
+
+  toggleCart(index) {
+    this.itemIndex = index;
+    this.showMore = !this.showMore;
+    console.log("trt", this.itemIndex, index, this.showMore);
+  }
+
+  moveUp(index) {
+    this.itemIndex = index;
+    this.showMore = false;
+  }
+
+  moveDown(index) {
+    if (this.itemIndex != index && this.showMore == true) {
+      this.showMore == true;
+    } else {
+      this.showMore = !this.showMore;
+    }
+    this.itemIndex = index;
   }
 
   getCategoryData() {
@@ -219,6 +241,22 @@ export class MainListPage implements OnInit {
 
   isEmpty(obj) {
     return Object.keys(obj).length === 0;
+  }
+
+  deleteWorkOrder(item) {
+    this.isLoading = true;
+    this.categoryService.deleteWorkOrderData(item.id).subscribe(res => {
+      if (res['data']) {
+        this.categoryArr = res['data'];
+        this.isLoading = false;
+        this.itemIndex = -1;
+        this.showMore = false;
+      }
+    }, err => {
+      this.isLoading = false;
+      this.errMessage = "Internal Error Occured"
+    })
+    console.log("item", item);
   }
 
 }

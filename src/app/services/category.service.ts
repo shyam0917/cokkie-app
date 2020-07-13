@@ -97,4 +97,11 @@ export class CategoryService {
     formData.append('user_id', this.userId)
     return this.http.post(this.baseUrl + 'getuserschedule', formData);
   }
+
+    // get dropdown data
+    deleteWorkOrderData(id) {
+      let formData = new FormData();
+      formData.append('delete_id', id)
+      return this.http.post(this.baseUrl + 'workorder', formData);
+    }
 }

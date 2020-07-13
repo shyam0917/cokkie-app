@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CalenderPageRoutingModule } from './calender-routing.module';
 import { NgCalendarModule  } from 'ionic2-calendar';
-import { MyModalPageModule } from '../my-modal/my-modal.module';
+// import { MyModalPageModule } from '../my-modal/my-modal.module';
 import { CalenderPage } from './calender.page';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { CalenderPage } from './calender.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MyModalPageModule,
+    // MyModalPageModule,
     NgCalendarModule,
     CalenderPageRoutingModule
   ],
