@@ -1,5 +1,6 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, } from '@angular/platform-browser';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { CategoryService } from '../services/category.service';
 })
 export class MainListPage implements OnInit {
   switch: string;
+  editUrl: SafeResourceUrl;
   isLoading: boolean = false;
   emptyData: boolean = false;
   categoryArr: any = [];
@@ -19,7 +21,9 @@ export class MainListPage implements OnInit {
   searchQuery: string = "";
 
   constructor(private activatedRoute: ActivatedRoute,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private router: Router,
+    public sanitizer: DomSanitizer) {
     this.isLoading = false;
   }
 
@@ -29,10 +33,15 @@ export class MainListPage implements OnInit {
     this.errMessage = "";
   }
 
-  toggleCart(index) {
-    this.itemIndex = index;
-    this.showMore = !this.showMore;
-    console.log("trt", this.itemIndex, index, this.showMore);
+  // toggleCart(index) {
+  //   this.itemIndex = index;
+  //   this.showMore = !this.showMore;
+  //   console.log("trt", this.itemIndex, index, this.showMore);
+  // }
+
+  openIFrame(id) {
+    this.editUrl = this.sanitizer.bypassSecurityTrustResourceUrl("https://cands.ca/candsproject/edit.php?id=" + id);
+    this.router.navigateByUrl('/iframe-form/3', { state: { url: this.editUrl } });
   }
 
   moveUp(index) {
@@ -55,12 +64,16 @@ export class MainListPage implements OnInit {
     if (this.switch && this.switch == '1') {
       this.isLoading = true;
       this.categoryService.getSearchClientData().subscribe(res => {
-        if (res) {
+        if (!this.isEmpty(res)) {
           this.testObject = res;
-          this.isLoading = false;
+          this.emptyData = false;
+        } else {
+          this.emptyData = true;
+          this.testObject = res;
         }
-
+        this.isLoading = false;
       }, err => {
+        console.log("err", err);
         this.isLoading = false
         this.errMessage = "Internal Error Occured";
       })
@@ -104,7 +117,7 @@ export class MainListPage implements OnInit {
       }, err => {
         this.isLoading = false;
         this.errMessage = "Internal Error Occurred"
-        console.log("err", err);
+
       })
     }
 
@@ -125,7 +138,7 @@ export class MainListPage implements OnInit {
       }, err => {
         this.isLoading = false;
         this.errMessage = "Internal Error Occurred"
-        console.log("err", err);
+
       })
     }
 
@@ -146,7 +159,7 @@ export class MainListPage implements OnInit {
       }, err => {
         this.isLoading = false;
         this.errMessage = "Internal Error Occurred"
-        console.log("err", err);
+
       })
     }
 
@@ -157,12 +170,16 @@ export class MainListPage implements OnInit {
     if (sw == '1') {
       this.isLoading = true;
       this.categoryService.getSearchClientData(this.searchQuery).subscribe(res => {
-        if (res) {
-          this.isLoading = false;
+        if (!this.isEmpty(res)) {
           this.testObject = res;
+          this.emptyData = false;
+        } else {
+          this.emptyData = true;
+          this.testObject = res
         }
-
+        this.isLoading = false;
       }, err => {
+        console.log("rrt", err);
         this.isLoading = false;
         this.errMessage = "Internal Error Occured";
       })
@@ -256,7 +273,7 @@ export class MainListPage implements OnInit {
       this.isLoading = false;
       this.errMessage = "Internal Error Occured"
     })
-    console.log("item", item);
+
   }
 
 }

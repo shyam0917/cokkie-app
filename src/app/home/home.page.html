@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="customize-toolbar">
     <ion-buttons slot="start">
-      <ion-menu-button color="light"></ion-menu-button>
+      <ion-menu-button color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
   </ion-toolbar>
@@ -103,8 +103,8 @@
       </div>
       <div class="appointment">
         <h3>TODAYS APPOINTMENTS</h3>
-        <div *ngFor="let appointment of appointmentArray; let i =index" class="appointment-detail">
-          <p>{{appointment.starttime | date:'shortTime'}} - #{{i+1}} {{appointment.title}} - {{appointment.startdatetime | date}}  </p>
+        <div class="appointment-detail">
+          <p *ngFor="let appointment of appointmentArray; let i =index">{{appointment.starttime | date:'shortTime'}} - #{{i+1}} {{appointment.title}} - {{appointment.startdatetime | date}}  </p>
         </div>
       </div>
     </div>

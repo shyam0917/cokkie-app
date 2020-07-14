@@ -1,23 +1,41 @@
-<!-- my-modal.page.html -->
-<ion-header>
-  <ion-toolbar color="danger">
-    <ion-title>my-modal</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-
-  <ion-grid>
-    <ion-row>
-      <ion-col text-center>
-        ID : 
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-button (click)="closeModal()">Close Modal</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-</ion-content>
+<div class="invoice-upload">
+  <!-- modal start -->
+  <div class="modalcustom">
+     <div class="modalcustom-header">
+        <h4>Edit Call   <span class="custom-icon"><i class="fa fa-times" aria-hidden="true"></i></span></h4>            
+     </div>
+     <div class="modalcustom-body">                  
+      <ion-list class="modal-padd">
+        <ion-item>
+          <ion-label>Select Staff</ion-label>
+          <ion-select okText="Okay" cancelText="Dismiss">
+            <ion-select-option>Female</ion-select-option>
+            <ion-select-option>Male</ion-select-option>
+          </ion-select>
+        </ion-item>        
+      </ion-list>           
+      <ion-item class="modal-padd">
+        <ion-label>Start Date</ion-label>
+        <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date"></ion-datetime>
+      </ion-item>
+      <ion-item class="modal-padd">
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="HH:mm"  placeholder="Select Time"></ion-datetime>
+      </ion-item>         
+      <ion-item class="modal-padd">
+        <ion-label>End Date</ion-label>
+        <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date"></ion-datetime>
+      </ion-item>
+      <ion-item class="modal-padd">
+        <ion-label>End Time</ion-label>
+        <ion-datetime displayFormat="HH:mm"  placeholder="Select Time"></ion-datetime>
+      </ion-item>
+      
+      
+     </div>
+     <div class="modalcustom-footer">
+      <ion-button expand="fill" color="success"  class="mt-3 custom-btn">Submit</ion-button>
+      <ion-button expand="fill" color="danger"  class="mt-3 custom-btn">Delete</ion-button>
+     </div>
+  </div>
+</div>

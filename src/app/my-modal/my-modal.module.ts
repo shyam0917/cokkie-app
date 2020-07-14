@@ -15,7 +15,6 @@ import { MyModalPage } from './my-modal.page';
     IonicModule,
     MyModalPageRoutingModule
   ],
-  declarations: [MyModalPage],
-  entryComponents:[MyModalPage]
+  declarations: [MyModalPage]
 })
 export class MyModalPageModule {}

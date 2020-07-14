@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {DomSanitizer,SafeResourceUrl,} from '@angular/platform-browser';
+
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -9,12 +9,11 @@ import { CategoryService } from '../services/category.service';
   styleUrls: ['./table.page.scss'],
 })
 export class TablePage implements OnInit {
-  editUrl: SafeResourceUrl;
+
   tableSwitch: string;
   tableArr: any = [];
   tableData: any = {};
   constructor(private activatedRoute: ActivatedRoute,
-    public sanitizer:DomSanitizer,
     private router: Router,
     private categoryService: CategoryService) { }
 
@@ -31,10 +30,6 @@ export class TablePage implements OnInit {
     this.getCategoryData();
   }
 
-  openIFrame(id){
-this.editUrl = this.sanitizer.bypassSecurityTrustResourceUrl("https://cands.ca/candsproject/edit.php?id=" + id);
-this.router.navigateByUrl('/iframe-form/3',{ state: { url: this.editUrl } });
-  }
 
   getCategoryData() {
 

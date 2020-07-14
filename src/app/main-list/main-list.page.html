@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="customize-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button text="" color="light"></ion-back-button>
+      <ion-back-button text="" color="dark"></ion-back-button>
     </ion-buttons>
     <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
   </ion-toolbar>
@@ -37,7 +37,7 @@
 
       <!-- Client Details -->
       <ion-list *ngIf="switch=='1'" class="main-list">
-        <div *ngIf="isEmpty(testObject)" class="text-danger text-center">No Data Available</div>
+        <div *ngIf="emptyData" class="text-danger text-center">No Data Available</div>
         <ion-item *ngFor="let item of testObject | keyvalue" lines="none" routerLink="/table/1"
           [queryParams]="item.value">
           <ion-avatar slot="start">
@@ -100,7 +100,7 @@
           <ion-label>
             <ion-label>
               <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
-              <h3><b>Amount: </b>{{item?.client_invoice_amount}} </h3>
+              <!-- <h3><b>Amount: </b>{{item?.client_invoice_amount}} </h3> -->
             </ion-label>
           </ion-label>
         </ion-item>
@@ -116,7 +116,6 @@
           <ion-label>
             <ion-label>
               <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
-              <!-- <h3><b>Amount: </b>$80 </h3> -->
             </ion-label>
           </ion-label>
         </ion-item>
@@ -125,7 +124,7 @@
       <!-- WorkFlow Details -->
       <ion-list *ngIf="switch=='8'" class="main-list">
         <div *ngIf="emptyData" class="text-danger text-center">No Data Available</div>
-        <ion-item *ngFor="let item of categoryArr; let i = index" lines="none">
+        <ion-item (click)="moveDown(i)" *ngFor="let item of categoryArr; let i = index" lines="none">
           <ion-grid >
             <ion-row>
               <ion-col size="10">
@@ -135,7 +134,7 @@
                 </div>
               </ion-col>
               <ion-col size="2">
-                <span  (click)="moveDown(i)" class="icon"><i [ngClass]="showMore && itemIndex ==i ? 'fas fa-caret-up pt-2' : 'fas fa-caret-down pt-2'"></i></span>
+                <span  class="icon"><i [ngClass]="showMore && itemIndex ==i ? 'fas fa-caret-up pt-2' : 'fas fa-caret-down pt-2'"></i></span>
               </ion-col>
             </ion-row>
 
@@ -150,7 +149,7 @@
                     <h3 class="my-2"><b>Status: </b>{{item?.work_status}}</h3>
                     <div class="main-subdetail">
                       <h2><b>Action</b></h2>
-                      <ion-button expand="fill" color="success" (click)="openIFrame(tableData.id)" class="mt-3">Edit</ion-button>
+                      <ion-button expand="fill" color="success" (click)="openIFrame(item.id)" class="mt-3">Edit</ion-button>
                       <ion-button expand="fill" color="danger" (click)="deleteWorkOrder(item)" class="mt-3">Delete</ion-button>
                     </div>
                   </div>

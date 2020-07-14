@@ -11,10 +11,18 @@ import { CategoryService } from '../services/category.service';
 export class CalenderPage implements OnInit {
     eventSource: any = [];
     viewTitle;
+    openModal:boolean = false;
     dataReturned: any;
     isLoading: boolean = false;
     dropdownArray: any = [];
     apiSource: any = [];
+    addForm = {
+        staff: '',
+        startDate: '',
+        startTime: '',
+        endDate: '',
+        endTime: ''
+    };
     isToday: boolean;
     calendar = {
         mode: 'month',
@@ -58,7 +66,29 @@ export class CalenderPage implements OnInit {
     }
 
 
-  
+    addCallForm(fm) {
+        this.openModal = false;
+        let formDetails = fm.form.value;
+        let idArr: any = [formDetails.staff];
+
+        let st = formDetails.startTime.split("T")[1];
+        let eT = formDetails.endTime.split("T")[1];
+
+        let formData = new FormData();
+        formData.append('sdateCall', formDetails.startDate.split("T")[0]);
+        formData.append('sdatetime', st.slice(0,8));
+        formData.append('edateCall', formDetails.endDate.split("T")[0]);
+        formData.append('edatetime', eT.slice(0,8));
+        formData.append('staff_mem', idArr);
+        this.categoryService.addScheduleEvent(formData).subscribe(res => {
+        this.openModal = false;
+        this.loadEvents();
+        }, err => {
+            this.openModal = false;
+        })
+    }
+
+
 
     getDropdownData() {
         this.categoryService.getScheduleDropdownData().subscribe(res => {
@@ -66,7 +96,6 @@ export class CalenderPage implements OnInit {
                 this.dropdownArray = res['data'];
             }
         }, err => {
-            console.log("rrw", err);
         })
     }
 
@@ -76,7 +105,6 @@ export class CalenderPage implements OnInit {
     }
 
     onEventSelected(event) {
-        console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
     }
 
     changeMode(mode) {
@@ -85,12 +113,11 @@ export class CalenderPage implements OnInit {
 
     today() {
         this.calendar.currentDate = new Date();
-        console.log("tt", new Date());
     }
 
     onTimeSelected(ev) {
-        console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-            (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
+        // console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
+        //     (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
     }
 
     onCurrentDateChanged(event: Date) {
@@ -102,7 +129,6 @@ export class CalenderPage implements OnInit {
 
     loadEvents() {
         this.categoryService.getScheduleData().subscribe(res => {
-            console.log("res", res);
             if (res['data']) {
                 this.apiSource = res['data'];
                 this.eventSource = this.apiSource.map(item => {
@@ -114,12 +140,10 @@ export class CalenderPage implements OnInit {
                     }
                 })
                 this.isLoading = false;
-                console.log("ttr", this.eventSource);
 
             }
         }, err => {
             this.isLoading = false;
-            console.log("err", err);
         })
     }
 
@@ -142,50 +166,12 @@ export class CalenderPage implements OnInit {
             this.isLoading = false;
         }, err => {
             this.isLoading = false;
-            console.log("er", err);
         })
-        console.log('Selected', selectedValue.detail.value);
     }
 
-    //   createRandomEvents() {
-    //       var events = [];
-    //       for (var i = 0; i < 50; i += 1) {
-    //           var date = new Date();
-    //           var eventType = Math.floor(Math.random() * 2);
-    //           var startDay = Math.floor(Math.random() * 90) - 45;
-    //           var endDay = Math.floor(Math.random() * 2) + startDay;
-    //           var startTime;
-    //           var endTime;
-    //           if (eventType === 0) {
-    //               startTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + startDay));
-    //               if (endDay === startDay) {
-    //                   endDay += 1;
-    //               }
-    //               endTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + endDay));
-    //               events.push({
-    //                   title: 'All Day - ' + i,
-    //                   startTime: startTime,
-    //                   endTime: endTime,
-    //                   allDay: true
-    //               });
-    //           } else {
-    //               var startMinute = Math.floor(Math.random() * 24 * 60);
-    //               var endMinute = Math.floor(Math.random() * 180) + startMinute;
-    //               startTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + startDay, 0, date.getMinutes() + startMinute);
-    //               endTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + endDay, 0, date.getMinutes() + endMinute);
-    //               events.push({
-    //                   title: 'Event - ' + i,
-    //                   startTime: startTime,
-    //                   endTime: endTime,
-    //                   allDay: false
-    //               });
-    //           }
-    //       }
-    //       return events;
-    //   }
 
     onRangeChanged(ev) {
-        console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
+        // console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
     }
 
     markDisabled = (date: Date) => {

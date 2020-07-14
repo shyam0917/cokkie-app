@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   ionViewDidEnter() {
     this.menu.swipeGesture(true);
-
+    this.getCurrentDate = new Date();
   }
 
   getAppointments() {

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-modal',
@@ -9,16 +8,11 @@ import { ModalController, NavParams } from '@ionic/angular';
 
 export class MyModalPage implements OnInit {
 
-  constructor(public navParams: NavParams,
-    public modalController: ModalController) { }
+  constructor() { }
 
   ngOnInit() {
     // console.table(this.navParams);
   }
 
-  async closeModal() {
-    const onClosedData: string = "Wrapped Up!";
-    await this.modalController.dismiss(onClosedData);
-  }
 
 }
