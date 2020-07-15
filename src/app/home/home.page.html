@@ -104,7 +104,7 @@
       <div class="appointment">
         <h3>TODAYS APPOINTMENTS</h3>
         <div class="appointment-detail">
-          <p *ngFor="let appointment of appointmentArray; let i =index">{{appointment.starttime | date:'shortTime'}} - #{{i+1}} {{appointment.title}} - {{appointment.startdatetime | date}}  </p>
+          <p *ngFor="let appointment of appointmentArray; let i =index">{{appointment.starttime | date:'shortTime'}} - #{{i+1}} {{appointment.title}} </p>
         </div>
       </div>
     </div>

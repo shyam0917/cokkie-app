@@ -63,7 +63,7 @@
       <ion-list class="modal-padd">
         <ion-item>
           <ion-label>Select Staff</ion-label>
-          <ion-select okText="Okay" cancelText="Dismiss" name="staff" required [(ngModel)]="addForm.staff">
+          <ion-select multiple  okText="Okay" cancelText="Dismiss" name="staff" required [(ngModel)]="addForm.staff">
             <ion-select-option *ngFor="let item of dropdownArray" value="{{item.id}}"> {{item.user_login}}({{item.display_name}})</ion-select-option>
           </ion-select>
         </ion-item>        

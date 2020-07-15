@@ -69,8 +69,8 @@ export class CalenderPage implements OnInit {
     addCallForm(fm) {
         this.openModal = false;
         let formDetails = fm.form.value;
-        let idArr: any = [formDetails.staff];
-
+        // let idArr: any = [...formDetails.staff];
+        // console.log("fm",formDetails,idArr);
         let st = formDetails.startTime.split("T")[1];
         let eT = formDetails.endTime.split("T")[1];
 
@@ -79,7 +79,7 @@ export class CalenderPage implements OnInit {
         formData.append('sdatetime', st.slice(0,8));
         formData.append('edateCall', formDetails.endDate.split("T")[0]);
         formData.append('edatetime', eT.slice(0,8));
-        formData.append('staff_mem', idArr);
+        formData.append('staff_mem', formDetails.staff);
         this.categoryService.addScheduleEvent(formData).subscribe(res => {
         this.openModal = false;
         this.loadEvents();
